@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AnnvitraApplication<annvitra>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.annvitra.annvitra.AnnvitraApplication",
+            "projectName": "annvitra",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
