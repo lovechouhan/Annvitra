@@ -1,16 +1,12 @@
 package com.annvitra.annvitra.Configuration;
 
-import org.springframework.beans.factory.annotation.Value;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Random;
+
 import org.springframework.stereotype.Service;
-
-import com.twilio.rest.api.v2010.account.Message;
-
-import java.io.*;
-import java.net.*;
-import java.util.*;
-
-import com.twilio.Twilio;
-import com.twilio.type.PhoneNumber;
 
 @Service
 public class SMSservice {
@@ -36,7 +32,7 @@ public class SMSservice {
     // ).create();
     // }
 
-    @Value("${otp.api.key}")
+    // @Value("${otp.api.key}")
     private String API_KEY;
 
     public String sendOTP2(String mobile10digit) throws Exception {

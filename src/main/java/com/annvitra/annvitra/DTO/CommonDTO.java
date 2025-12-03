@@ -20,6 +20,7 @@ public class CommonDTO {
   @JsonAlias({ "OTP", "otp", "Otp" })
   private String OTP;
   private String mobile;
+  private String email;
 
   // delivery partner
   private String name;
