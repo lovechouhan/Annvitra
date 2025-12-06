@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.annvitra.annvitra.Configuration.EmailService;
+import com.annvitra.annvitra.Configuration.SMSservice;
 import com.annvitra.annvitra.DTO.CommonDTO;
 import com.annvitra.annvitra.Entity.BankDetails;
 import com.annvitra.annvitra.Entity.DeliveryPartner;
@@ -38,7 +39,7 @@ public class AuthServiceIMPL implements AuthService {
     private final DeliverPartnerRepository deliveryPartnerRepository;
     private final RestaurantRepository restaurantRepository;
     private final CommonMethods commonMethods;
-    // private final SMSservice smsservice;
+    private final SMSservice smsservice;
     private final EmailService emailService;
 
     @Override
@@ -195,8 +196,7 @@ public class AuthServiceIMPL implements AuthService {
             } else {
                 // generate and send OTP
             //    String generatedOTP = smsservice.sendOTP(commonDTO.getMobile());
-            String OTP = commonMethods.generateOTP();
-             emailService.sendEmail(commonDTO.getEmail(), "Your OTP for ANNVITRA registration", "Your OTP for ANNVITRA registration is: " + OTP);
+                 String OTP =  smsservice.sendOTP(commonDTO.getMobile());
                 registerUser(commonDTO, OTP);
             }
 
@@ -208,8 +208,7 @@ public class AuthServiceIMPL implements AuthService {
                 throw new IllegalArgumentException("Mobile number already registered for Farmer");
             } else {
                 // generate and send OTP
-             String OTP = commonMethods.generateOTP();
-             emailService.sendEmail(commonDTO.getEmail(), "Your OTP for ANNVITRA registration", "Your OTP for ANNVITRA registration is: " + OTP);
+             String OTP =  smsservice.sendOTP(commonDTO.getMobile());
                 registerUser(commonDTO, OTP);
             }
 
@@ -223,9 +222,7 @@ public class AuthServiceIMPL implements AuthService {
             } else {
                 // generate and send OTP
             //    String generatedOTP = smsservice.sendOTP(commonDTO.getMobile());
-              String OTP = commonMethods.generateOTP();
-        
-             emailService.sendEmail(commonDTO.getEmail(), "Your OTP for ANNVITRA registration", "Your OTP for ANNVITRA registration is: " + OTP);
+               String OTP =  smsservice.sendOTP(commonDTO.getMobile());
                 registerUser(commonDTO, OTP);
             }
         } else if (role.equalsIgnoreCase("RESTAURANT")) {
@@ -237,8 +234,8 @@ public class AuthServiceIMPL implements AuthService {
             } else {
                 // generate and send OTP
                 // String generatedOTP = smsservice.sendOTP(commonDTO.getMobile());
-                  String OTP = commonMethods.generateOTP();
-                  emailService.sendEmail(commonDTO.getEmail(), "Your OTP for ANNVITRA registration", "Your OTP for ANNVITRA registration is: " + OTP);
+                 String OTP =  smsservice.sendOTP(commonDTO.getMobile());
+                
                 registerUser(commonDTO, OTP);
             }
         } else {
