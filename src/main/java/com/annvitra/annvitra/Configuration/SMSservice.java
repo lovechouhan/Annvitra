@@ -6,6 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -32,7 +33,7 @@ public class SMSservice {
     // ).create();
     // }
 
-    // @Value("${otp.api.key}")
+     @Value("${otp.api.key}")
     private String API_KEY;
 
     public String sendOTP2(String mobile10digit) throws Exception {
